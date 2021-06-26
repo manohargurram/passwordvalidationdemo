@@ -44,10 +44,23 @@ public class PasswordValidationServiceTest {
 	}
 
 	@Test
-	public void validatePasswordLength() {
+	public void validatePasswordLengthUpperCaseLowerCase() {
 		try {
 			logger.info("validating  password length");
 			PasswordRequestVO passwordRequestVO = new PasswordRequestVO("111");
+			PasswordSuccessResponseVO responseVO = passwordValidationService.validate(passwordRequestVO);
+			assertEquals(new PasswordSuccessResponseVO("valid password"), responseVO);
+		} catch (ValidationException ex) {
+			logger.info("exception response:"+ex.getErrorsList().toString());
+			assertTrue(true);
+		}
+	}
+	
+	@Test
+	public void validatePasswordHavingNumber() {
+		try {
+			logger.info("validating  password length");
+			PasswordRequestVO passwordRequestVO = new PasswordRequestVO("AAAAAAAAAAAAAAAAAAAA");
 			PasswordSuccessResponseVO responseVO = passwordValidationService.validate(passwordRequestVO);
 			assertEquals(new PasswordSuccessResponseVO("valid password"), responseVO);
 		} catch (ValidationException ex) {
