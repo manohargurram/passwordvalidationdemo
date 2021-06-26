@@ -46,7 +46,7 @@ public class PasswordValidationServiceTest {
 	@Test
 	public void validatePasswordLengthUpperCaseLowerCase() {
 		try {
-			logger.info("validating  password length");
+			logger.info("validating  password length uppercase letter lowercase letter");
 			PasswordRequestVO passwordRequestVO = new PasswordRequestVO("111");
 			PasswordSuccessResponseVO responseVO = passwordValidationService.validate(passwordRequestVO);
 			assertEquals(new PasswordSuccessResponseVO("valid password"), responseVO);
@@ -59,7 +59,7 @@ public class PasswordValidationServiceTest {
 	@Test
 	public void validatePasswordHavingNumber() {
 		try {
-			logger.info("validating  password length");
+			logger.info("validating  password having number");
 			PasswordRequestVO passwordRequestVO = new PasswordRequestVO("AAAAAAAAAAAAAAAAAAAA");
 			PasswordSuccessResponseVO responseVO = passwordValidationService.validate(passwordRequestVO);
 			assertEquals(new PasswordSuccessResponseVO("valid password"), responseVO);
@@ -67,6 +67,14 @@ public class PasswordValidationServiceTest {
 			logger.info("exception response:"+ex.getErrorsList().toString());
 			assertTrue(true);
 		}
+	}
+	
+	@Test
+	public void validatePasswordIncase3validationsSuccess() {
+			logger.info("validating  password for if 3 conditions success");
+			PasswordRequestVO passwordRequestVO = new PasswordRequestVO("1aA");
+			PasswordSuccessResponseVO responseVO = passwordValidationService.validate(passwordRequestVO);
+			assertEquals(new PasswordSuccessResponseVO("valid password"), responseVO);
 	}
 
 }
