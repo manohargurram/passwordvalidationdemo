@@ -19,3 +19,11 @@ Assume Each verification takes 1 second to complete. How would you solve items 2
 while testing via junit:
 
 if we run each test case separately or written separate test file for each test case then for every test it should start and stop the container. it reads to perfrmance issue will take so much time to execute all testcases. to solve this problem write all test cases in single file so that it will start and stop container only once for all test cases 
+
+while testing via postman:
+
+while testing by sending request to server if we are feeling slow and taking much time to execute then we can solve this problem in 2 ways
+
+1. use single reqular expression to validate all conditions in one shot but in this case we may not able to give exact reason for failure
+
+2. deploy multiple nodes of server with the help of container and container orchestration tools like Docker, kubernetes
