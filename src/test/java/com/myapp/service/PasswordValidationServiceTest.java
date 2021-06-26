@@ -77,4 +77,16 @@ public class PasswordValidationServiceTest {
 			assertEquals(new PasswordSuccessResponseVO("valid password"), responseVO);
 	}
 
+	@Test
+	public void validatePasswordonlyForNotHavinglowerCase() {
+		try {
+			logger.info("validating  password for not having only lowercase");
+			PasswordRequestVO passwordRequestVO = new PasswordRequestVO("1A1111111111111111111");
+			PasswordSuccessResponseVO responseVO = passwordValidationService.validate(passwordRequestVO);
+			assertEquals(new PasswordSuccessResponseVO("valid password"), responseVO);
+		} catch (ValidationException ex) {
+			logger.info("exception response:"+ex.getErrorsList().toString());
+			assertTrue(true);
+		}
+	}
 }
