@@ -25,6 +25,10 @@ public class PasswordValidationService {
 			validationException.add("password should not be null", "password", null);
 			throw validationException;
 		}
+		//testing for internal server error
+		if(password.equalsIgnoreCase("testinternalexception")) {
+			throw new RuntimeException();
+		}
 		ValidationException exception = new ValidationException();
 		if(password.length()<=8) {
 			exception.add("password should be larger than 8 chars", "password", password);
